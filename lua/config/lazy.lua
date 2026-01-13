@@ -36,35 +36,33 @@ return require("lazy").setup({
     -- shared library
     "nvim-lua/plenary.nvim",
 
-    -- ==================================================
-    -- lazy-load the rest
     { "mbbill/undotree",     
         cmd = "UndotreeToggle",
         config = function() require("plugins.undotree") end
     },
+
     { "itchyny/lightline.vim",
         event = "VimEnter" 
     },
+
     { "junegunn/goyo.vim",
-        cmd = "Goyo",
         config = function() require("plugins.goyo") end 
     },
+
     { "tpope/vim-commentary",
         event = "BufRead" 
     },
+
     { "ThePrimeagen/refactoring.nvim",
         cmd = "Refactor",
         dependencies = { "nvim-treesitter/nvim-treesitter", "plenary.nvim" },
         config = function() require("plugins.refactoring") end,
     },
-    { "ckipp01/nvim-jenkinsfile-linter",
-        dependencies = { "plenary.nvim" },
-    },
 
-    -- optional
     { "HiPhish/rainbow-delimiters.nvim",
         ft = { "lua", "cs", "html", "json", "sql", "ts", "js", "groovy" }
     },
+
     { "dhruvasagar/vim-table-mode",      
         ft = { "markdown", "text", "org" } 
     },
