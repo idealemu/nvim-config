@@ -2,7 +2,37 @@
 -- Settings
 -- ==================================================
 vim.g.mapleader = " "
-vim.opt.clipboard = "unnamedplus"
+
+if vim.fn.has('win32') == 1 then
+  -- Windows (native PowerShell/cmd.exe)
+  vim.g.clipboard = {
+    name = 'win32yank',
+    copy = {
+      ['+'] = 'win32yank.exe -i --crlf',
+      ['*'] = 'win32yank.exe -i --crlf',
+    },
+    paste = {
+      ['+'] = 'win32yank.exe -o --lf',
+      ['*'] = 'win32yank.exe -o --lf',
+    },
+    cache_enabled = 0,
+  }
+else
+  -- generic Unix 
+  vim.g.clipboard = {
+    name = 'xclip-strip-cr',
+    copy = {
+      ['+'] = { 'xclip', '-selection', 'clipboard', '-i' },
+      ['*'] = { 'xclip', '-selection', 'primary', '-i' },
+    },
+    paste = {
+      ['+'] = { 'sh', '-c', 'xclip -selection clipboard -o | tr -d "\r"' },
+      ['*'] = { 'sh', '-c', 'xclip -selection primary -o | tr -d "\r"' },
+    },
+    cache_enabled = 0,
+  }
+end
+vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.wrap = true
 vim.wo.wrap = true
@@ -15,9 +45,9 @@ vim.opt.wrap = false
 -- Tabs
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
-vim.shiftwidth = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.smartindent = false
+vim.opt.smartindent = false
 
 -- Backups and undo history
 vim.opt.swapfile = false
@@ -46,7 +76,6 @@ vim.cmd([[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatop
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80"
 -- vim.opt.showmatch = true
-vim.opt.clipboard = 'unnamedplus'
 vim.opt.mouse='a'
 vim.opt.ruler = false
 vim.opt.scrolloff = 0
@@ -91,3 +120,8 @@ vim.keymap.set("n", "<leader>tm", ":TableModeToggle<CR>", { desc = "Toggle Table
 -- NOTE: currently using sudoedit instead
 -- vim.keymap.set("c", "w!!", "w !sudo tee > /dev/null %") -- Save file with sudo (alternative)
 -- https://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work/7078429#7078429
+-- ==================================================
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.jenkinsfile",
+  callback = function() vim.bo.filetype = "groovy" end,
+})
