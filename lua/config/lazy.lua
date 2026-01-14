@@ -40,14 +40,18 @@ return require("lazy").setup({
     -- lazy-load the rest
     { "mbbill/undotree",     
         cmd = "UndotreeToggle",
+        keys = {{ '<leader>u', '<Cmd>UndotreeToggle<CR>', desc = 'Toggle Undotree', silent = true }},
         config = function() require("plugins.undotree") end
     },
     { "itchyny/lightline.vim",
         event = "VimEnter" 
     },
-    { "junegunn/goyo.vim",
-        cmd = "Goyo",
-        config = function() require("plugins.goyo") end 
+    { 'junegunn/goyo.vim',
+        cmd  = 'Goyo',
+        keys = { { '<leader>f', '<Cmd>Goyo<CR>', desc = 'Toggle Goyo', silent = true } },
+        config = function()
+          require('plugins.goyo') 
+        end,
     },
     { "tpope/vim-commentary",
         event = "BufRead" 
@@ -57,19 +61,14 @@ return require("lazy").setup({
         dependencies = { "nvim-treesitter/nvim-treesitter", "plenary.nvim" },
         config = function() require("plugins.refactoring") end,
     },
-    { "ckipp01/nvim-jenkinsfile-linter",
-        dependencies = { "plenary.nvim" },
-    },
-
-    -- optional
     { "HiPhish/rainbow-delimiters.nvim",
-        ft = { "lua", "cs", "html", "json", "sql", "ts", "js", "groovy" }
+        ft = { "lua", "cs", "html", "json",
+            "sql", "ts", "js", "groovy" }
     },
     { "dhruvasagar/vim-table-mode",      
         ft = { "markdown", "text", "org" } 
     },
 
-    -- colours
     { "navarasu/onedark.nvim",
     config = function()
             require("onedark").setup({ style = "dark" })
