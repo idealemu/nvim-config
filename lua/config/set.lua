@@ -88,41 +88,14 @@ vim.keymap.set("n", "<leader>tm", ":TableModeToggle<CR>", { desc = "Toggle Table
 -- vim.keymap.set("c", "w!!", "w !sudo tee > /dev/null %") -- Save file with sudo (alternative)
 -- https://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work/7078429#7078429
 -- ==================================================
+-- Jenkins
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   pattern = "*.jenkinsfile",
   callback = function() vim.bo.filetype = "groovy" end,
 })
 
+local url = os.getenv("JENKINS_VALIDATOR_URL")
 vim.api.nvim_create_autocmd("BufWritePost", {
-  -- When .jenkinsfile written
-  pattern = "*.[jJ]enkins[fF]ile",
-  callback = function()
-    local file_path = vim.fn.expand('%:p')
-    local url = os.getenv("JENKINS_VALIDATOR_URL")
-    if not url then
-      vim.notify("JENKINS_VALIDATOR_URL is not set", vim.log.levels.ERROR)
-      return
-    end
-
-
-    local cmd = {
-
-      "curl", "-X", "POST",
-      "-F", "jenkinsfile=@" .. file_path,
-      url
-
-    } -- POST request to validation endpoint
-
-    vim.fn.jobstart(cmd, {
-      on_exit = function(_, exit_code)
-
-        if exit_code == 0 then
-          vim.notify("Jenkinsfile validated successfully", vim.log.levels.INFO)
-        else
-          vim.notify("Jenkinsfile validation failed", vim.log.levels.ERROR)
-        end
-      end
-    })
-  end
+  pattern = "*[jJ]enkins[fF]ile",
+  command = "!curl -X POST -F 'jenkinsfile=<%' " .. url
 })
-
