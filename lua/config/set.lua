@@ -97,5 +97,5 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 local url = os.getenv("JENKINS_VALIDATOR_URL") or ""
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "*[jJ]enkins[fF]ile",
-  command = "!curl -X POST -F 'jenkinsfile=<%' " .. url
+  command = "!curl -s -X POST -F 'jenkinsfile=<%' " .. url
 })
