@@ -1,6 +1,11 @@
 -- ==================================================
 -- Settings
 -- ==================================================
+
+-- keep visual selection after shifting
+vim.keymap.set('v', '>', '>gv', { silent = true })
+vim.keymap.set('v', '<', '<gv', { silent = true })
+
 vim.opt.wrap = true
 vim.wo.wrap = true
 
