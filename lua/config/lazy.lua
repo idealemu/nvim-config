@@ -47,7 +47,7 @@ return require("lazy").setup({
     },
     { 'junegunn/goyo.vim',
         cmd  = 'Goyo',
-        keys = { { '<leader>f', '<Cmd>Goyo<CR>', desc = 'Toggle Goyo', silent = true } },
+        keys = { { '<leader>g', '<Cmd>Goyo<CR>', desc = 'Toggle Goyo', silent = true } },
         config = function()
           require('plugins.goyo') 
         end,
@@ -97,4 +97,8 @@ return require("lazy").setup({
             { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
         }
     },
+
+    -- { import = 'plugins' },       -- skip auto-import
+    require('plugins.telescope'),
+
 })
