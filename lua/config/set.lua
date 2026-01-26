@@ -104,3 +104,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "*[jJ]enkins[fF]ile",
   command = "!curl -s -X POST -F 'jenkinsfile=<%' " .. url
 })
+
+
+-- ==================================================

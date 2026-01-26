@@ -47,7 +47,7 @@ return require("lazy").setup({
     },
     { 'junegunn/goyo.vim',
         cmd  = 'Goyo',
-        keys = { { '<leader>g', '<Cmd>Goyo<CR>', desc = 'Toggle Goyo', silent = true } },
+        keys = { { '<leader>gg', '<Cmd>Goyo<CR>', desc = 'Toggle Goyo', silent = true } },
         config = function()
           require('plugins.goyo') 
         end,
