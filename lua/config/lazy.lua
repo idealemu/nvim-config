@@ -100,5 +100,6 @@ return require("lazy").setup({
 
     -- { import = 'plugins' },       -- skip auto-import
     require('plugins.telescope'),
+    require('plugins.nvim-tree'),
 
 })

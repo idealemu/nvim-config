@@ -56,7 +56,7 @@ vim.g.loaded_matchparen = 1
 -- ==================================================
 -- Remaps
 -- ==================================================
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- Open netrw file explorer
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- Open netrw file explorer
 vim.keymap.set("n", "Q", "<nop>") -- Disable ex mode (mode is useful for scripting only)
 
 vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv") -- Move selected lines up
