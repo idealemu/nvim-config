@@ -1,12 +1,13 @@
 return {
   'nvim-tree/nvim-tree.lua',
+  lazy = false,
   version = '*',
   dependencies = { 'nvim-tree/nvim-web-devicons' }, -- file icons
 
   --  Global key-maps (work from any buffer)
   keys = {
     { '<C-n>',      ':NvimTreeToggle<CR>',  desc = 'Toggle tree' },
-    { '<leader>pv',      ':NvimTreeToggle<CR>',  desc = 'Toggle tree' },
+    { '<leader>pv', ':NvimTreeToggle<CR>',  desc = 'Toggle tree' },
   },
 
   config = function()   -- callback to set keymaps in local buffer
@@ -36,6 +37,11 @@ return {
         view    = { width = 30 },
         renderer = { group_empty = true },	 -- Collapses chains of single-child folders into one line
         filters  = { dotfiles = true },		 -- Hides files whose name starts with a dot 
+
+        update_focused_file = { -- Focus current file in buffer
+            enable = true,
+            update_root = true,
+          },
     })
   end,
 }
