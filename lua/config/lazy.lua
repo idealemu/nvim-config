@@ -38,9 +38,12 @@ return require("lazy").setup({
 
     { "mbbill/undotree",     
         cmd = "UndotreeToggle",
+        lazy = false,
         keys = {{ '<leader>u', '<Cmd>UndotreeToggle<CR>', desc = 'Toggle Undotree', silent = true }},
-        config = function() require("plugins.undotree") end
+        -- config = function() require("plugins.undotree") end
     },
+
+
 
     { "itchyny/lightline.vim",
         event = "VimEnter" 
