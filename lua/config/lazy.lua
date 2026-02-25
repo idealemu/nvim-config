@@ -45,14 +45,6 @@ return require("lazy").setup({
     { "itchyny/lightline.vim",
         event = "VimEnter" 
     },
-    { 'junegunn/goyo.vim',
-        cmd  = 'Goyo',
-        keys = { { '<leader>gg', '<Cmd>Goyo<CR>', desc = 'Toggle Goyo', silent = true } },
-        config = function()
-          require('plugins.goyo') 
-        end,
-    },
-
     { "tpope/vim-commentary",
         event = "BufRead" 
     },
@@ -101,5 +93,6 @@ return require("lazy").setup({
     -- { import = 'plugins' },       -- skip auto-import
     require('plugins.telescope'),
     require('plugins.nvim-tree'),
+    require('plugins.goyo'),
 
 })
