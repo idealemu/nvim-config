@@ -97,5 +97,6 @@ return require("lazy").setup({
     require('plugins.telescope'),
     require('plugins.nvim-tree'),
     require('plugins.goyo'),
+    require('plugins.gitsigns'),
 
 })

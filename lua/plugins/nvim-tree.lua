@@ -35,8 +35,24 @@ return {
         on_attach = build_keymaps_for_local_nvimtree_buffer,
         sort    = { sorter = 'case_sensitive' }, -- Options from nvim-tree/explorer/sorter.lua
         view    = { width = 30 },
-        renderer = { group_empty = true },	 -- Collapses chains of single-child folders into one line
         filters  = { dotfiles = true },		 -- Hides files whose name starts with a dot 
+        renderer = {
+            group_empty = true,	 -- Collapses chains of single-child folders into one line
+            icons = {
+                glyphs = {
+                    git = {
+                        unstaged = "US✗",
+                        staged = "S✓",
+                        unmerged = "UM",
+                        renamed = "R➜",
+                        deleted = "D",
+                        untracked = "UT★",
+                        ignored = "I◌"
+                    }
+                }
+            }
+        },
+
 
         update_focused_file = { -- Focus current file in buffer
             enable = true,
