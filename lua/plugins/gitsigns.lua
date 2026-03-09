@@ -5,7 +5,8 @@ return {
 
       --  Global key-maps (work from any buffer)
       keys = {
-        { '<leader>gb', ':Gitsigns blame<CR>',  desc = 'Toggle tree' },
+        { '<leader>gb', ':Gitsigns blame<CR>',  desc = 'Blame buffer' },
+        { '<leader>gbl', ':Gitsigns toggle_current_line_blame<CR>',  desc = 'Toggle line blame' },
       },
 
     config = function()
