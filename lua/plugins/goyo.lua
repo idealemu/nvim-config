@@ -2,7 +2,7 @@ return {
      'junegunn/goyo.vim',
 
 
-    keys = { { '<leader>gg', '<Cmd>Goyo<CR>', desc = 'Toggle Goyo', silent = true } },
+    keys = { { '<leader>gf', '<Cmd>Goyo<CR>', desc = 'Toggle Goyo', silent = true } },
 
     config = function()
 
