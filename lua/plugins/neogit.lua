@@ -14,6 +14,7 @@ return {
         "<leader>gl", -- V mode
         function()
           local file = vim.fn.expand("%:p")
+          print("Neogit log for current file:", file)
           vim.cmd([[execute "normal! \<ESC>"]])
           local line_start = vim.fn.getpos("'<")[2]
           local line_end = vim.fn.getpos("'>")[2]
@@ -26,6 +27,7 @@ return {
         "<leader>gl",
         function()
           local file = vim.fn.expand("%:p")
+          print("Neogit log for current file:", file)
           require("neogit").action("log", "log_current", { "--", file })()
         end,
         desc = "Neogit Log for this file",
