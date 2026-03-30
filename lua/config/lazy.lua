@@ -82,4 +82,5 @@ return require("lazy").setup({
     require('plugins.gitsigns'),
     require('plugins.neogit'),
     require('plugins.mason'),
+    require('plugins.nvim-cmp'),
 })
