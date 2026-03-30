@@ -7,8 +7,9 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 -- ==================================================
-require("config.lazy")               -- Plugins
-require("config.set")                -- Remaps and settings
+require("config.lazy")              
+require("config.set")                
+require("config.lsp")
 require("config.clipboard")
-require("config.colorscheme") -- Colorscheme
+require("config.colorscheme") 
 -- ==================================================

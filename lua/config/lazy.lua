@@ -81,5 +81,5 @@ return require("lazy").setup({
     require('plugins.goyo'),
     require('plugins.gitsigns'),
     require('plugins.neogit'),
-
+    require('plugins.mason'),
 })
