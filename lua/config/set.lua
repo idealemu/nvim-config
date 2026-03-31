@@ -91,6 +91,9 @@ vim.keymap.set("n", "<leader>o", ":setlocal spell! spelllang=en_us<CR>")
 -- Toggle Table Mode
 vim.keymap.set("n", "<leader>tm", ":TableModeToggle<CR>", { desc = "Toggle Table Mode" })
 
+
+vim.keymap.set("n", "<leader>sw", ":set wrap!<CR>", { desc = "Toggle Wrap" } ) 
+
 -- NOTE: currently using sudoedit instead
 -- vim.keymap.set("c", "w!!", "w !sudo tee > /dev/null %") -- Save file with sudo (alternative)
 -- https://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work/7078429#7078429
