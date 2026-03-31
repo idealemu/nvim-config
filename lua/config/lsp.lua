@@ -36,6 +36,7 @@ vim.lsp.config('ruff', {
                     "FBT002",
                     "ERA001",
                     "T201",
+                    "TD",
                 },
       },
     },
