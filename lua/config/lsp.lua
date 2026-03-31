@@ -26,7 +26,17 @@ vim.lsp.config('ruff', {
   init_options = {
     settings = {
       lint = {
-        select = { "ARG001", "F841" },
+        select = {  "ALL" },
+        ignore = {  "D103", 
+                    "D205",
+                    "D212",
+                    "E501",
+                    "PLR2004",
+                    "FBT003",
+                    "FBT002",
+                    "ERA001",
+                    "T201",
+                },
       },
     },
   },

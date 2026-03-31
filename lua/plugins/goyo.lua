@@ -7,7 +7,7 @@ return {
     config = function()
 
 
-        vim.g.goyo_height = "40%"
+        vim.g.goyo_height = "60%"
         vim.g.goyo_width = 100 
 
         vim.api.nvim_create_autocmd('User', {
