@@ -2,6 +2,7 @@ local mason_lspconfig = require('mason-lspconfig')
 
 -- 1. Configure LSP servers directly with vim.lsp.config()
 -- These configs are registered but NOT yet enabled
+-- TODO: use jedi instead of pylsp
 vim.lsp.config('pylsp', {
   settings = {
     pylsp = {
