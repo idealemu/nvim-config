@@ -84,5 +84,6 @@ return require("lazy").setup({
     require('plugins.mason'),
     require('plugins.nvim-cmp'),
     -- require('plugins.harpoon2'),
+    require('plugins.mark'),
 
 })
