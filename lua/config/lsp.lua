@@ -30,6 +30,8 @@ vim.lsp.config('ruff', {
         ignore = {  "D103", 
                     "D205",
                     "D212",
+                    "D400",
+                    "D415",
                     "E501",
                     "PLR2004",
                     "FBT003",
