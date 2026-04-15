@@ -30,8 +30,8 @@ vim.lsp.config('ruff', {
         ignore = {  "D103", 
                     "D205",
                     "D212",
-                    "D400",
-                    "D415",
+                    -- "D400",
+                    -- "D415",
                     "E501",
                     "PLR2004",
                     "FBT003",
@@ -45,7 +45,20 @@ vim.lsp.config('ruff', {
   },
 })
 
--- 2. Setup mason-lspconfig 
+-- PowerShell LSP configuration
+vim.lsp.config('powershell_es', {
+  bundle_path = vim.fn.stdpath('data') .. '/mason/packages/powershell-editor-services',
+  shell = 'pwsh',
+  settings = {
+    powershell = {
+      codeFormatting = {
+        Preset = 'OTBS',
+      },
+    },
+  },
+})
+
+-- 2. Setup mason-lspconfig
 mason_lspconfig.setup({
-  ensure_installed = { "pylsp", "ruff" },
+  ensure_installed = { "pylsp", "ruff", "powershell_es" },
 })
