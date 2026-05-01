@@ -6,6 +6,9 @@
 vim.keymap.set('v', '>', '>gv', { silent = true })
 vim.keymap.set('v', '<', '<gv', { silent = true })
 
+vim.opt.ff = unix
+vim.opt.diffopt = iwhite
+
 vim.opt.autochdir = true  -- CD to parent of file in current buffer
 
 vim.opt.wrap = true

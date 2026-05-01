@@ -58,7 +58,36 @@ vim.lsp.config('powershell_es', {
   },
 })
 
+vim.lsp.config('lemminx', {
+  cmd = {"lemminx"},
+  filetypes = {'xml', 'xsd', 'xsl', 'svg'},
+  single_file_support = true,
+  settings = {
+    xml = {
+      validation = {
+        enabled = true
+      },
+      formatting = {
+        enabled = true
+      }
+    }
+  },
+})
+
 -- 2. Setup mason-lspconfig
 mason_lspconfig.setup({
-  ensure_installed = { "pylsp", "ruff", "powershell_es" },
+  ensure_installed = { "pylsp", "ruff", "powershell_es", "lemminx" },
 })
+
+
+-- DEFAULT LSP keybinds https://neovim.io/doc/user/lsp/
+-- "gra" (Normal and Visual mode) is mapped to vim.lsp.buf.code_action()
+-- "gri" is mapped to vim.lsp.buf.implementation()
+-- "grn" is mapped to vim.lsp.buf.rename()
+-- "grr" is mapped to vim.lsp.buf.references()
+-- "grt" is mapped to vim.lsp.buf.type_definition()
+-- "grx" is mapped to vim.lsp.codelens.run()
+-- "gO" is mapped to vim.lsp.buf.document_symbol()
+-- CTRL-S (Insert mode) is mapped to vim.lsp.buf.signature_help()
+-- v_an and v_in fall back to LSP vim.lsp.buf.selection_range() if treesitter is not active.
+-- gx handles textDocument/documentLink. Example: with gopls, invoking gx on "os" in this Go code will open documentation externally:
