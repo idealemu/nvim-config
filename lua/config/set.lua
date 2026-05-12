@@ -108,10 +108,22 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 })
 
 local url = os.getenv("JENKINS_VALIDATOR_URL") or ""
+-- Works on both windows and linux
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "*[jJ]enkins[fF]ile",
-  command = "!curl -s -X POST -F 'jenkinsfile=<%:p' " .. url
+  callback = function()
+    local filepath = vim.fn.expand('%:p')
+    local escaped_path = vim.fn.shellescape(filepath)
+    local cmd = string.format('curl -s -X POST -F jenkinsfile=@%s %s', escaped_path, url)
+    local result = vim.fn.system(cmd)
+    if vim.v.shell_error == 0 then
+      print('Jenkinsfile validated successfully.')
+    else
+      vim.notify('Validation failed: ' .. result, vim.log.levels.ERROR)
+    end
+  end
 })
+
 
 
 -- ==================================================
